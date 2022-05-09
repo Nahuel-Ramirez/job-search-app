@@ -1,0 +1,42 @@
+.container-registro {
+  display: flex;
+  flex-direction: column;
+  max-width: 30rem;
+  height: 36rem;
+
+  box-shadow: 5px 5px 50px 5px;
+  margin: auto;
+  margin-top: 50px;
+
+  border-radius: 34px;
+  background: #fafafa;
+  box-shadow: 19px 19px 17px #bebebe, -19px -19px 17px #ffffff;
+}
+
+#inputs-registro {
+  display: flex;
+  flex-direction: column;
+  width: 300px;
+  margin: 0px auto 0px auto;
+  padding: 15px;
+}
+
+.btn-registro {
+  margin: 15px;
+  width: 200px;
+  background: rgb(0, 0, 0);
+  background: linear-gradient(
+    0deg,
+    rgba(0, 0, 0, 0.8435749299719888) 0%,
+    #000 200%
+  );
+}
+
+.title-registro {
+  color: rgb(0, 0, 0);
+  color: linear-gradient(0deg, rgba(0, 0, 0, 0.8435749299719888) 0%, #000 200%);
+}
+
+.caption-login {
+  padding: 15px;
+}
