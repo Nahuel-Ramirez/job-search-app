@@ -14,6 +14,23 @@ function Registro() {
     console.log(formReg);
   };
 
+  const registro = (event) => {
+    event.preventDefault();
+    const urlBase = "";
+    fetch(urlBase, {
+      method: "POST",
+      body: {
+        name: formReg.current[0].value,
+        surname: formReg.current[2].value,
+        email: formReg.current[4].value,
+        password: formReg.current[6].value,
+      },
+    })
+      .then((result) => result.json())
+      .then((data) => console.log(data))
+      .catch((error) => console.error("Error wacho", error));
+  };
+
   return (
     <>
       <div className="container-registro">
@@ -58,7 +75,10 @@ function Registro() {
             <Button
               variant="contained"
               className="btn-registro"
-              onClick={dataReg}
+              onClick={() => {
+                dataReg();
+                registro();
+              }}
             >
               Registrarse
             </Button>

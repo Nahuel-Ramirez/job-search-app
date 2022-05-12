@@ -6,24 +6,10 @@ import Box from "@mui/material/Box";
 import Typography from "@mui/material/Typography";
 import { useNavigate } from "react-router-dom";
 import { useRef } from "react";
-// import { useState } from "react";
-// import { useEffect } from "react";
 
 function Login() {
-  // const [usuarios, setUsuarios] = useState();
   const navigate = useNavigate();
   const formLogin = useRef();
-
-  // const getUsuarios = () => {
-  //   fetch("/admin/resources/users")
-  //     .then((result) => result.json())
-  //     .then((data) => setUsuarios(data));
-  //   console.log(usuarios);
-  // };
-
-  // useEffect(() => {
-  //   getUsuarios();
-  // }, []);
 
   const irRegistro = () => {
     navigate("/");
@@ -31,6 +17,21 @@ function Login() {
 
   const dataForm = () => {
     console.log(formLogin);
+  };
+
+  const login = (event) => {
+    event.preventDefault();
+    const urlBase = "";
+    fetch(urlBase, {
+      method: "POST",
+      body: {
+        email: formLogin.current[0].value,
+        password: formLogin.current[2].value,
+      },
+    })
+      .then((result) => result.json())
+      .then((data) => console.log(data))
+      .catch((error) => console.error("Error wacho", error));
   };
 
   return (
@@ -56,7 +57,10 @@ function Login() {
             <Button
               variant="contained"
               className="btn-login"
-              onClick={dataForm}
+              onClick={() => {
+                dataForm();
+                login();
+              }}
             >
               Iniciar Sesion
             </Button>

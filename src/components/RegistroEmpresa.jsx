@@ -14,6 +14,23 @@ function RegistroEmpresa() {
     console.log(formRegEmp);
   };
 
+  const registroEmp = (event) => {
+    event.preventDefault();
+    const urlBase = "";
+    fetch(urlBase, {
+      method: "POST",
+      body: {
+        name: formRegEmp.current[0].value,
+        cuit: formRegEmp.current[2].value,
+        email: formRegEmp.current[4].value,
+        password: formRegEmp.current[6].value,
+      },
+    })
+      .then((result) => result.json())
+      .then((data) => console.log(data))
+      .catch((error) => console.error("Error wacho", error));
+  };
+
   return (
     <>
       <div className="container-registro">
@@ -58,7 +75,10 @@ function RegistroEmpresa() {
             <Button
               variant="contained"
               className="btn-registro"
-              onClick={dataRegEmp}
+              onClick={() => {
+                dataRegEmp();
+                registroEmp();
+              }}
             >
               Registrarse
             </Button>
