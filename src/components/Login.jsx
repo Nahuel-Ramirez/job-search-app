@@ -12,6 +12,10 @@ function Login() {
   const formLogin = useRef();
 
   const irRegistro = () => {
+    navigate("/reg");
+  };
+
+  const irHome = () => {
     navigate("/");
   };
 
@@ -23,22 +27,37 @@ function Login() {
     event.preventDefault();
     const urlBase = "";
     fetch(urlBase, {
+      headers: {
+        "content-type": "application/json",
+      },
       method: "POST",
-      body: {
+      body: JSON.stringify({
         email: formLogin.current[0].value,
         password: formLogin.current[2].value,
-      },
+      }),
     })
-      .then((result) => result.json())
-      .then((data) => console.log(data))
+      .then((res) => res.json())
+      .then((data) => {
+        localStorage.setItem("token", data.token);
+        // context.setAuth({
+        //   id: data.user.id,
+        //   name: data.user.name,
+        //   logged: true,
+        // });
+      })
       .catch((error) => console.error("Error wacho", error));
   };
 
   return (
     <>
       <div className="container">
-        <Typography variant="h1" fontSize={50} className="title-login">
-          Job Search App
+        <Typography
+          variant="h1"
+          fontSize={50}
+          className="title-login"
+          onClick={irHome}
+        >
+          Job Market
         </Typography>
         <p>Por favor, inicia sesion</p>
         <form ref={formLogin}>

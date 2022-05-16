@@ -35,41 +35,26 @@ function RegistroEmpresa() {
     <>
       <div className="container-registro">
         <Typography variant="h1" fontSize={50} className="title-registro">
-          Job Search App
+          Job Market
         </Typography>
         <Typography variant="h6">Registra tu empresa.</Typography>
         <form ref={formRegEmp}>
           <Box id="inputs-registro">
-            <TextField
-              id="outlined-basic"
-              label="Razon social"
-              variant="outlined"
-              type="text"
-            />
+            <TextField label="Razon social" variant="outlined" type="text" />
           </Box>
           <Box id="inputs-registro">
             <TextField
-              id="outlined-basic"
               label="CUIT"
               variant="outlined"
               type="text"
+              placeholder="Sin guiones"
             />
           </Box>
           <Box id="inputs-registro">
-            <TextField
-              id="outlined-basic"
-              label="Email"
-              variant="outlined"
-              type="email"
-            />
+            <TextField label="Email" variant="outlined" type="email" />
           </Box>
           <Box id="inputs-registro">
-            <TextField
-              id="outlined-basic"
-              label="Contraseña"
-              variant="outlined"
-              type="password"
-            />
+            <TextField label="Contraseña" variant="outlined" type="password" />
           </Box>
           <Box>
             <Button
@@ -88,7 +73,7 @@ function RegistroEmpresa() {
           Si ya tienes una cuenta, <Link to={"/login"}>Inicia sesion</Link>
         </Typography>
         <Typography variant="caption" className="caption-login">
-          ¿Sos postulante? <Link to={"/"}>Registrate</Link>
+          ¿Sos postulante? <Link to={"/reg"}>Registrate</Link>
         </Typography>
       </div>
     </>

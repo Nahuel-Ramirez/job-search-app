@@ -35,41 +35,21 @@ function Registro() {
     <>
       <div className="container-registro">
         <Typography variant="h1" fontSize={50} className="title-registro">
-          Job Search App
+          Job Market
         </Typography>
         <Typography variant="h6">Primero, registrate.</Typography>
         <form ref={formReg}>
           <Box id="inputs-registro">
-            <TextField
-              id="outlined-basic"
-              label="Nombre"
-              variant="outlined"
-              type="text"
-            />
+            <TextField label="Nombre" variant="outlined" type="text" />
           </Box>
           <Box id="inputs-registro">
-            <TextField
-              id="outlined-basic"
-              label="Apellido"
-              variant="outlined"
-              type="text"
-            />
+            <TextField label="Apellido" variant="outlined" type="text" />
           </Box>
           <Box id="inputs-registro">
-            <TextField
-              id="outlined-basic"
-              label="Email"
-              variant="outlined"
-              type="email"
-            />
+            <TextField label="Email" variant="outlined" type="email" />
           </Box>
           <Box id="inputs-registro">
-            <TextField
-              id="outlined-basic"
-              label="Contraseña"
-              variant="outlined"
-              type="password"
-            />
+            <TextField label="Contraseña" variant="outlined" type="password" />
           </Box>
           <Box>
             <Button

@@ -1,0 +1,65 @@
+#navbar {
+  height: 80px;
+}
+
+#title-navbar {
+  transition: all 0.5s;
+}
+
+#title-navbar:hover {
+  color: blue;
+  transition: all 0.5s;
+  cursor: pointer;
+}
+
+#search {
+  width: 350px;
+}
+.search-navbar {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  padding: 10px;
+  margin: 15px;
+  margin-left: 135px;
+}
+
+.btns-navbar {
+  position: absolute;
+  right: 0;
+  padding: 10px;
+}
+#btn-nav {
+  padding: 20px;
+}
+
+.home-container {
+  margin-top: 100px;
+  display: flex;
+  justify-content: center;
+  flex-direction: row;
+  flex-wrap: wrap;
+  padding: 25px;
+
+  background: rgba(255, 255, 255, 0.4);
+  -webkit-backdrop-filter: blur(10px);
+  backdrop-filter: blur(10px);
+  border: 1px solid rgba(255, 255, 255, 0.2);
+}
+
+.home-parrafo {
+  display: flex;
+  flex-direction: column;
+  margin: auto;
+}
+
+.home-parrafo > div {
+  padding: 15px;
+  display: flex;
+  justify-content: center;
+  align-content: center;
+}
+
+.home-parrafo > div > strong {
+  color: green;
+}
