@@ -6,6 +6,10 @@ import Box from "@mui/material/Box";
 import Typography from "@mui/material/Typography";
 import { useNavigate } from "react-router-dom";
 import { useRef } from "react";
+import { contextAuth } from "../Context/AuthContext";
+import { postWithToken } from "../api";
+import { useContext } from "react";
+import Swal from "sweetalert2";
 
 function Login() {
   const navigate = useNavigate();
@@ -19,85 +23,82 @@ function Login() {
     navigate("/");
   };
 
-  const dataForm = () => {
-    console.log(formLogin);
-  };
+  const context = useContext(contextAuth);
 
   const login = (event) => {
     event.preventDefault();
-    const urlBase = "";
-    fetch(urlBase, {
-      headers: {
-        "content-type": "application/json",
-      },
-      method: "POST",
-      body: JSON.stringify({
-        email: formLogin.current[0].value,
-        password: formLogin.current[2].value,
-      }),
+    postWithToken("/auth/login", {
+      email: formLogin.current[0].value,
+      password: formLogin.current[2].value,
     })
-      .then((res) => res.json())
-      .then((data) => {
-        localStorage.setItem("token", data.token);
-        // context.setAuth({
-        //   id: data.user.id,
-        //   name: data.user.name,
-        //   logged: true,
-        // });
+      .then(({ data }) => {
+        console.log(data);
+        const { token, user } = data;
+        localStorage.setItem("token", token);
+        context.setAuth({
+          id: user.id,
+          name: user.name,
+          logged: true,
+        });
+        navigate("/jobs");
       })
-      .catch((error) => console.error("Error wacho", error));
+      .catch((error) => {
+        if (error) {
+          Swal.fire({
+            title: "Algo salio mal",
+            text: "Usuario o contraseña incorrectos",
+            icon: "error",
+            confirmButtonText: "OK",
+          });
+        }
+      });
   };
 
   return (
     <>
-      <div className="container">
-        <Typography
-          variant="h1"
-          fontSize={50}
-          className="title-login"
-          onClick={irHome}
-        >
-          Job Market
-        </Typography>
-        <p>Por favor, inicia sesion</p>
-        <form ref={formLogin}>
-          <Box id="inputs-container">
-            <TextField id="outlined-basic" label="Email" variant="outlined" />
-          </Box>
-          <Box id="inputs-container">
-            <TextField
-              id="outlined-basic"
-              label="Contraseña"
-              variant="outlined"
-              type="password"
-            />
-          </Box>
-          <Box>
-            <Button
-              variant="contained"
-              className="btn-login"
-              onClick={() => {
-                dataForm();
-                login();
-              }}
-            >
-              Iniciar Sesion
-            </Button>
-          </Box>
-          <p>Si no tienes una cuenta</p>
-          <Box>
-            <Button
-              variant="contained"
-              type="submit"
-              className="btn-login"
-              onClick={() => {
-                irRegistro();
-              }}
-            >
-              Registrarse
-            </Button>
-          </Box>
-        </form>
+      <div className="page-container">
+        <div className="container">
+          <Typography
+            variant="h1"
+            fontSize={50}
+            className="title-login"
+            onClick={irHome}
+          >
+            Job Market
+          </Typography>
+          <h3>Por favor, inicia sesion</h3>
+          <form ref={formLogin}>
+            <Box id="inputs-container">
+              <TextField id="outlined-basic" label="Email" variant="outlined" />
+            </Box>
+            <Box id="inputs-container">
+              <TextField
+                id="outlined-basic"
+                label="Contraseña"
+                variant="outlined"
+                type="password"
+              />
+            </Box>
+            <Box>
+              <Button variant="contained" className="btn-login" onClick={login}>
+                Iniciar Sesion
+              </Button>
+            </Box>
+            <p>Si no tienes una cuenta</p>
+            <Box>
+              <Button
+                variant="contained"
+                type="submit"
+                className="btn-login"
+                onClick={() => {
+                  irRegistro();
+                }}
+              >
+                Registrarse
+              </Button>
+            </Box>
+          </form>
+        </div>
       </div>
     </>
   );

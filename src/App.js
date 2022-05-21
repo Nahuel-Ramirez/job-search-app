@@ -1,8 +1,9 @@
 import { BrowserRouter, Route, Routes } from "react-router-dom";
 import "./App.css";
 import Home from "./components/Home";
-import Jobs from "./components/Jobs";
+import Jobs from "./components/applicant/Jobs";
 import Login from "./components/Login";
+import NotFound from "./components/NotFound";
 import Registro from "./components/Registro";
 import RegistroEmpresa from "./components/RegistroEmpresa";
 
@@ -17,6 +18,7 @@ function App() {
             <Route path="/regemp" element={<RegistroEmpresa />} />
             <Route path="/" element={<Home />} />
             <Route path="/jobs" element={<Jobs />} />
+            <Route path="*" element={<NotFound />} />
           </Routes>
         </BrowserRouter>
       </div>

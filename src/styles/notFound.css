@@ -1,0 +1,13 @@
+.not-found-img-container {
+  height: 20rem;
+
+  display: flex;
+  justify-content: flex-end;
+  align-items: center;
+}
+
+.container-404 {
+  min-height: 100vh;
+  background-image: none;
+  background-color: #fff;
+}

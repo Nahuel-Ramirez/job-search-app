@@ -2,7 +2,7 @@ import React from "react";
 import { useState } from "react";
 import { createContext } from "react";
 
-const contextAuth = createContext();
+export const contextAuth = createContext();
 
 function AuthContext({ children }) {
   const [auth, setAuth] = useState({
